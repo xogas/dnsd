@@ -1,4 +1,4 @@
-.PHONY: build test fmt clean
+.PHONY: build test run fmt vet clean
 
 build:
 	go build -o bin/dnsd .
@@ -6,8 +6,8 @@ build:
 test:
 	go test ./...
 
-fmt:
-	gofmt ./...
+run:
+	go run . -listen 127.0.0.1:5353 -zone example.com=examples/example.com.zone
 
 clean:
 	rm -rf bin
